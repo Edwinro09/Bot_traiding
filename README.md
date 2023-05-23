@@ -1,4 +1,9 @@
 # Bot_traiding
 
+<<<<<<< HEAD
 *** AUN SE ENCUENTRA EN PROCCESO DE ELABORACION *** 
+=======
+***AUN SE ENCUENTRA EN PROCCESO DE ELABORACION*** 
+
+>>>>>>> main
 TENER PACIENCIA 
