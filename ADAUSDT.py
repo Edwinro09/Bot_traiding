@@ -1,19 +1,28 @@
 import config
+<<<<<<< HEAD
 import math
+=======
+>>>>>>> main
 from binance.client import Client
 from binance.enums import *
 import time
 import numpy as np
 from colorama import init 
 from colorama import Fore, Back, Style
+<<<<<<< HEAD
 import math
+=======
+>>>>>>> main
 init()
 
 
 cliente = Client(config.API_KEY, config.API_SECRET, tld='com')
 
 simbolo = 'ADAUSDT'
+<<<<<<< HEAD
 simboloBalnce = 'ADA'
+=======
+>>>>>>> main
 cantidadOrden = 66 # cantidad a comprar (Varias monedasd de BTC tienen error LOTSIZE por compras menores a 20 USD)
 
 decimales = '{:.4f}'
@@ -64,6 +73,7 @@ def _ma20_ ():
 
 while 1:
 
+<<<<<<< HEAD
     ## Calculamos el balance en cuenta para poner orden OCO exacta y evitar LOTSIZA
     sum_simbolo = 0.0 
     balances = cliente.get_account()
@@ -97,6 +107,12 @@ while 1:
         print("Precio de venta si SUBE  " + ordenes[1]['price'])
         time.sleep(20) # Mando el robot a dormir porque EN TEORIA abrio una orden 
         continue 
+=======
+    ordenes = cliente.get_open_orders(symbol=simbolo)
+    print(Fore.BLUE + "Ordenes actuales abiertas") # si devuelve [] esta vacio
+    print(ordenes)
+
+>>>>>>> main
 
     if(len(ordenes)!= 0):
         print(Fore.RED + "Hay ordenes abiertas")
@@ -135,9 +151,15 @@ while 1:
     print(Fore.BLUE + "--------" + simbolo + "---------")
     print("**********************************")
     print(" Precio actual de "+ simbolo + " es: " + str(decimales.format(symbolPrice))) #el .8 es la cantidad de decimales que no trae el simbolo 
+<<<<<<< HEAD
     print(Fore.GREEN + "Precio MA5" + str(decimales.format(ma5)))
     print(Fore.YELLOW + "Precio MA10" + str(decimales.format(ma10)))
     print(Fore.RED + "Precio MA20" + str(decimales.format(ma20)))
+=======
+    print(Fore.GREEN + "Precio MAS" + str(decimales.format(ma5)))
+    print(Fore.YELLOW + "Precio MAS" + str(decimales.format(ma10)))
+    print(Fore.RED + "Precio MAS" + str(decimales.format(ma20)))
+>>>>>>> main
     print("Precio en que se va a comprar" + str(decimales.format(ma20*0.995)))
     if(symbolPrice > ma5 and ma5 > ma10 and ma10 > ma20):
         print(Fore.GREEN + "Comprando si no hay ordenes abiertas")
@@ -172,7 +194,11 @@ while 1:
                 stopLimitPrice = str(decimales.format(symbolPrice*0.985)),
                 stopLimitTimeInForce = TIME_IN_FORCE_GTC,
                 ## Error LOS SIZE es porque no soporta decimales en quantity
+<<<<<<< HEAD
                 quantity =  str(math.floor(sum_simbolo)), # BINANCE cobra un fee, tarifa. Sino va a tirar un error de insuficent FOUNDS.
+=======
+                quantity = cantidadOrden, # BINANCE cobra un fee, tarifa. Sino va a tirar un error de insuficent FOUNDS.
+>>>>>>> main
                 stopPrice = str(decimales.format(symbolPrice*0.99)),
                 price = str(decimales.format(symbolPrice*1.01)),
                 )
@@ -180,8 +206,23 @@ while 1:
         time.sleep(20) #mando el robot a dormir porque EN TEORIA abrio un orden, dejamos que el mercado opere.
 
 
+<<<<<<< HEAD
     else:
         print(Fore.RED + "No se cumple las condiciones")
         time.sleep(20)
 
     # Fin ordenes prueba
+=======
+    else:print(Fore.RED + "No se cumple las condiciones")
+
+    # Fin ordenes prueba
+
+
+
+ 
+
+
+
+
+
+>>>>>>> main
